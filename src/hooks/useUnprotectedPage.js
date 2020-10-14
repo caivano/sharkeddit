@@ -13,4 +13,4 @@ const useUnprotectedPage = () => {
     }, [history])
 }
 
-export default useUnprotectedPage;
+export default useUnprotectedPage

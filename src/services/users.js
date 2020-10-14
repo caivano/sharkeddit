@@ -10,7 +10,7 @@ export const login = (body, history, setButtonName) => {
         setButtonName('logout')
     })
     .catch((error) => {
-        console.log(error)
+        console.log(error.response)
         alert('Falha no login, tente novamente!')
     })
 }
@@ -23,6 +23,6 @@ export const signup = (body, history, setButtonName) => {
         setButtonName('logout')
     })
     .catch((error) => {
-        console.log(error)
+        console.log(error.response)
     })
 }

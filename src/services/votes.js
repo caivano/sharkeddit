@@ -12,14 +12,11 @@ export const sendVote = (id, direction) => {
             Authorization: token
         }
     })
-    .then((response) => {
-        console.log(direction)
-    })
+    .then()
     .catch((error) => {
-        console.log(error)
+        console.log(error.response)
     })
 }
-
     
 export const sendCommentVote = (postId, commentId, direction) => {
     const body = {
@@ -30,9 +27,8 @@ export const sendCommentVote = (postId, commentId, direction) => {
             Authorization: token
         }
     })
-    .then((response) => {
-    })
+    .then()
     .catch((error) => {
-        console.log(error)
+        console.log(error.response)
     })
 }

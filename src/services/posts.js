@@ -28,13 +28,13 @@ export const createComment = (id, body, setIsLoading, getPostDetail, setPostDeta
             Authorization: token
         }
     })
-    .then((response) => {
+    .then(() => {
         setIsLoading(false)
         alert('Comentário criado com sucesso')
         getPostDetail(id, setPostDetail, setPostComments)
     })
     .catch((error) => {
-        console.log(error)
+        console.log(error.response)
     })
 }
 
@@ -49,6 +49,6 @@ export const createComment = (id, body, setIsLoading, getPostDetail, setPostDeta
         setPostComments(response.data.post.comments)
     })
     .catch((error) => {
-        console.log(error)
+        console.log(error.response)
     })
 }

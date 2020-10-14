@@ -4,22 +4,22 @@ import animationData from '../../assets/lotties/shark'
 
 const Loading = () => {
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid slice"
-        }
-      };
+  const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
+  };
 
-    return ( 
-            <Lottie 
-	        options={defaultOptions}
-            height={350}
-            width={350}
-            />
-     );
+  return ( 
+    <Lottie 
+      options={defaultOptions}
+      height={350}
+      width={350}
+    />
+  );
 }
  
 export default Loading;

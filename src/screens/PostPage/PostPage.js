@@ -59,7 +59,7 @@ const PostPage = () => {
                     commentsCount={postDetail.commentsCount} 
                     postId={postDetail.id}
                     className={classes.box}
-                    />
+                />
                 <CommentFormBox id='comment-form'>
                     <TextField
                         value={form.text}
@@ -80,9 +80,9 @@ const PostPage = () => {
                         {isLoading ? <CircularProgress color={'inherit'} size={24}/> : <>comentar</>}
                     </Button>
                 </CommentFormBox>
-                    {postComments.sort((a, b) => {return b.createdAt - a.createdAt}).map((comment) => {
-                        return (
-                            <CommentBox
+                {postComments.sort((a, b) => {return b.createdAt - a.createdAt}).map((comment) => {
+                    return (
+                        <CommentBox
                             key={comment.id}
                             id={comment.id}
                             username={comment.username}
@@ -90,11 +90,12 @@ const PostPage = () => {
                             votesCount={comment.votesCount}
                             postId={id}
                             createdAt={timePassed(comment.createdAt)}
-                            />
-                            )})}
-        </Container>
+                        />
+                    )})}
+            </Container>
         )
     }
+    
     return ( 
         <>
         { postDetail ? renderPostDetail() : <Loading/> }

@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(3)
     }
 }))
+
 const FeedPage = () => {
     const classes = useStyles();
     const [postArray, setPostArray] = useState([])

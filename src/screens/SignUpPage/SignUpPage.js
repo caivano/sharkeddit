@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         width: '150px',
         margin: '5px',
     }
-  }));
+}));
 
 const SignUpPage = (props) => {
     const classes = useStyles();
@@ -51,59 +51,59 @@ const SignUpPage = (props) => {
     return ( 
         <Container className={classes.container} maxWidth="xs">
             <Avatar className={classes.avatar}>
-            <LockIcon />
+                <LockIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
                 Faça seu cadastro!
             </Typography>
             <form className={classes.form} id={'signup-form'}>
                 <TextField
-                value={form.username}
-                onChange={handleInputChange}
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="Nome de usuário"
-                name="username"
-                autoComplete="username"
-                autoFocus
+                    value={form.username}
+                    onChange={handleInputChange}
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="username"
+                    label="Nome de usuário"
+                    name="username"
+                    autoComplete="username"
+                    autoFocus
                 />
                 <TextField
-                value={form.email}
-                onChange={handleInputChange}
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="E-mail"
-                name="email"
-                autoComplete="email"
+                    value={form.email}
+                    onChange={handleInputChange}
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="E-mail"
+                    name="email"
+                    autoComplete="email"
                 />
-            <TextField
-                value={form.password}
-                onChange={handleInputChange}
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Senha"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-            />
-            <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={onClickSignUp}
-            >
-                cadastrar
-            </Button>
+                <TextField
+                    value={form.password}
+                    onChange={handleInputChange}
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Senha"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                />
+                <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                    onClick={onClickSignUp}
+                >
+                    cadastrar
+                </Button>
             </form>
         </Container>
      );

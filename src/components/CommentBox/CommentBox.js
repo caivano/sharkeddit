@@ -55,4 +55,4 @@ const CommentBox = (props) => {
      );
 }
  
-export default CommentBox;
+export default CommentBox
