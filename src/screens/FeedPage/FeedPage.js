@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Container, makeStyles, Typography, Button, CircularProgress, TextField } from '@material-ui/core';
 import useProtectedPage from '../../hooks/useProtectedPage';
+import useForm from '../../hooks/useForm'
 import PostCard from '../../components/PostCard/PostCard';
 import Loading from '../../components/Loading/Loading';
 import { timePassed } from '../../helpers/timePassed'
 import { baseURL } from '../../constants/urls';
-import useForm from '../../hooks/useForm'
 import { createPost } from '../../services/posts'
 
 const useStyles = makeStyles((theme) => ({
@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 const FeedPage = () => {
-    const [postArray, setPostArray] = useState([])
     const classes = useStyles();
+    const [postArray, setPostArray] = useState([])
+    const [buttonLoading, setButtonLoading] = useState(false)
     const [form, handleInputChange, resetState] = useForm({ title: '', text: ''})
-    const [isLoading, setIsLoading] = useState(false)
     
     useProtectedPage();
     useEffect(() => {
@@ -40,12 +40,12 @@ const FeedPage = () => {
             setPostArray(response.data.posts)
         })
         .catch((error) => {
-            console.log(error)
+            console.log(error.response)
             alert('Ocorreu um erro, tente novamente')
         })
     }
         
-        const renderPosts = () => {
+    const renderPosts = () => {
         return (
             postArray.filter(post => {return typeof post.title === 'string'} )
             .sort((a, b) => {return b.createdAt - a.createdAt})
@@ -72,9 +72,8 @@ const FeedPage = () => {
         const isValid = element.checkValidity()
         element.reportValidity()
         if(isValid){
-            createPost(form, setIsLoading, getAllPosts)
+            createPost(form, setButtonLoading, getAllPosts)
             resetState()
-            
         }
     }
 
@@ -84,24 +83,24 @@ const FeedPage = () => {
             <Container className={classes.subcontainer}>
                 <form id='feed-form'>
                     <TextField
-                    value={form.title}
-                    onChange={handleInputChange}
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="title"
-                    label="Título do post"
-                    name="title"
+                        value={form.title}
+                        onChange={handleInputChange}
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="title"
+                        label="Título do post"
+                        name="title"
                     />
                     <TextField
-                    value={form.text}
-                    onChange={handleInputChange}
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="text"
-                    label="Escreva aqui seu post"
-                    name="text"
+                        value={form.text}
+                        onChange={handleInputChange}
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="text"
+                        label="Escreva aqui seu post"
+                        name="text"
                     />
                     <Button
                         type="submit"
@@ -109,7 +108,7 @@ const FeedPage = () => {
                         color="primary"
                         onClick={onClickCreate}
                     >
-                        {isLoading ? <CircularProgress color={'inherit'} size={24}/> : <>postar</>}
+                        {buttonLoading ? <CircularProgress color={'inherit'} size={24}/> : <>postar</>}
                     </Button>
                 </form>
             </Container>

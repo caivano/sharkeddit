@@ -20,9 +20,13 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const LoginForm = (props) => {
-    const [form, handleInputChange] = useForm({ username: '', email: '', password: ''})
     const classes = useStyles();
     const history = useHistory();
+    const [form, handleInputChange] = useForm({ 
+        username: '', 
+        email: '', 
+        password: ''
+    })
 
     const onClickLogin = (event) => {
         event.preventDefault()

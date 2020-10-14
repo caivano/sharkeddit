@@ -12,8 +12,8 @@ axios.post = jest.fn().mockResolvedValue()
 
 axios.put = jest.fn().mockResolvedValue()
 
-describe('Feed de posts', () => {
-  test('Testa renderização inicial', async () => {
+describe('FeedPage tests', () => {
+  test('initial render', async () => {
     axios.get = jest.fn().mockResolvedValue({
       posts: [{
         commentsCount: 3,
@@ -45,7 +45,7 @@ describe('Feed de posts', () => {
 
   })
 
-  test('Testa criação de posts', async () => {
+  test('post creation', async () => {
     axios.post = jest.fn().mockResolvedValue()
     axios.get = jest.fn().mockResolvedValue({
       posts: []
@@ -71,7 +71,6 @@ describe('Feed de posts', () => {
       text: 'Post 123'
     })
 
-    //vai falhar aqui
     await wait(() => {
       expect(axios.get).toHaveBeenCalledTimes(2)
     })

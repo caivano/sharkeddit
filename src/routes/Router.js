@@ -9,21 +9,21 @@ import ErrorPage from '../screens/ErrorPage';
 const Router = (props) => {
     return ( 
         <Switch>
+
             <Route exact path={'/login'}>
                 <LoginPage setButtonName={props.setButtonName}/>
             </Route>
+            
             <Route exact path={'/cadastro'}>
                 <SignUpPage setButtonName={props.setButtonName}/>
             </Route>
-            <Route exact path={['/feed', '/']}>
-                <FeedPage/>
-            </Route>
-            <Route exact path={'/feed/:id'}>
-                <PostPage/>
-            </Route>
-            <Route>
-                <ErrorPage/>
-            </Route>
+            
+            <Route exact path={['/feed', '/']} component={FeedPage} />
+
+            <Route exact path={'/feed/:id'} component={PostPage} />
+            
+            <Route component={ErrorPage}/>
+            
         </Switch>
      );
 }

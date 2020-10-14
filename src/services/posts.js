@@ -10,14 +10,12 @@ export const createPost = (body, setIsLoading, getAllPosts) => {
             Authorization: token
         }
     })
-    .then((response) => {
+    .then(() => {
         setIsLoading(false)
         alert('Post criado com sucesso')
         getAllPosts()
-
     })
-    .catch((error) => {
-        console.log(error)
+    .catch(() => {
         setIsLoading(false)
         alert('Algo deu errado. Por favor, tente novamente.')
     })
