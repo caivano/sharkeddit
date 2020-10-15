@@ -2,7 +2,6 @@
 This project was developed at the third module of [Labenu's Full-Stack Web Development Bootcamp](https://www.labenu.com.br/).
 
 <img src="https://github.com/caivano/sharkeddit/blob/sharkeddit/src/assets/img/shark.png" alt="sharkeddit logo" title="Shark" align="right" height="60" />
-
 ### Scope
 It's a remake of Reddit and it's original name was Labeddit. To differentiate the name from colleagues versions - and since I'm very fond of sharks - it became Sharkeddit.
 
