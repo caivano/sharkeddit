@@ -28,7 +28,7 @@ const NavBar = (props) => {
                 <ButtonWrapper>
                     <Button color={"inherit"} onClick={() => goToFeed(history)}>
                         <LogoImg src={SharkLogo}/>
-                        <NavBarTitle>LabEddit</NavBarTitle>
+                        <NavBarTitle>SharkEddit</NavBarTitle>
                     </Button>
                     <Button color={"inherit"} onClick={navBarAction}>
                         <NavBarTitle>{buttonName}</NavBarTitle>
