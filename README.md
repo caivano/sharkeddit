@@ -23,7 +23,3 @@ This project was developed at the third module of [Labenu's Full-Stack Web Devel
 The [MIT License]() (MIT)
 
 Copyright :copyright: 2020 - Sharkeddit
-
-<br>
-
-*Giovanna Dotto Caivano, full-stack web developer and project manager.* 
