@@ -1,12 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Typography } from '@material-ui/core';
+import useChangeTitle from '../../hooks/useChangeTitle';
 import { goToFeed } from '../../routes/Coordinator';
-import ErrorShark from '../../assets/img/error-shark.png'
 import { MainContainer, ErrorImg } from './styled'
+import ErrorShark from '../../assets/img/error-shark.png'
 
 const ErrorPage = () => {
     const history = useHistory()
+
+    useChangeTitle("Erro")
 
     return ( 
         <MainContainer>

@@ -6,6 +6,7 @@ import LockIcon from '@material-ui/icons/Lock';
 import useForm from '../../hooks/useForm';
 import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 import { signup } from '../../services/users';
+import useChangeTitle from '../../hooks/useChangeTitle';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -36,6 +37,7 @@ const SignUpPage = (props) => {
     const history = useHistory();
     const [form, handleInputChange] = useForm({ username: '', email: '', password: ''})
 
+    useChangeTitle("Cadastro")
     useUnprotectedPage();
 
     const onClickSignUp = (event) => {

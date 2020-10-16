@@ -5,9 +5,10 @@ import PostCard from '../../components/PostCard/PostCard';
 import CommentBox from '../../components/CommentBox'
 import Loading from '../../components/Loading/Loading';
 import useProtectedPage from '../../hooks/useProtectedPage';
+import useChangeTitle from '../../hooks/useChangeTitle';
+import useForm from '../../hooks/useForm';
 import { getPostDetail } from '../../services/posts'
 import { timePassed } from '../../helpers/timePassed'
-import useForm from '../../hooks/useForm';
 import { CommentFormBox } from './styled';
 import { createComment } from '../../services/posts';
 
@@ -30,6 +31,7 @@ const PostPage = () => {
     const [form, handleInputChange, resetState] = useForm({ text: ''})
     const [isLoading, setIsLoading] = useState(false)
 
+    useChangeTitle("Post")
     useProtectedPage()
     
     useEffect(() => {
