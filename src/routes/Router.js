@@ -18,7 +18,7 @@ const Router = (props) => {
                 <SignUpPage setButtonName={props.setButtonName}/>
             </Route>
             
-            <Route exact path={['/feed', '/']} component={FeedPage} />
+            <Route exact path={['/feed', '/', '/sharkeddit']} component={FeedPage} />
 
             <Route exact path={'/feed/:id'} component={PostPage} />
             

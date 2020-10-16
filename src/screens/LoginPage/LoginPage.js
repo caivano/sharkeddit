@@ -5,6 +5,7 @@ import { Button, Container, Avatar, Typography } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
 import { goToSignUp } from '../../routes/Coordinator';
 import useUnprotectedPage from '../../hooks/useUnprotectedPage';
+import useChangeTitle from '../../hooks/useChangeTitle';
 import LoginForm from './LoginForm';
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +28,7 @@ const LoginPage = (props) => {
     const classes = useStyles();
     const history = useHistory();
 
+    useChangeTitle("Entrar")
     useUnprotectedPage()
 
     return ( 

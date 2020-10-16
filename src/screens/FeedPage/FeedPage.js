@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Container, makeStyles, Typography, Button, CircularProgress, TextField } from '@material-ui/core';
 import useProtectedPage from '../../hooks/useProtectedPage';
 import useForm from '../../hooks/useForm'
+import useChangeTitle from '../../hooks/useChangeTitle';
 import PostCard from '../../components/PostCard/PostCard';
 import Loading from '../../components/Loading/Loading';
 import { timePassed } from '../../helpers/timePassed'
@@ -26,7 +27,9 @@ const FeedPage = () => {
     const [buttonLoading, setButtonLoading] = useState(false)
     const [form, handleInputChange, resetState] = useForm({ title: '', text: ''})
     
+    useChangeTitle("Feed")
     useProtectedPage();
+
     useEffect(() => {
         getAllPosts()
     }, [])
@@ -42,7 +45,6 @@ const FeedPage = () => {
         })
         .catch((error) => {
             console.log(error.response)
-            alert('Ocorreu um erro, tente novamente')
         })
     }
         
