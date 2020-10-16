@@ -71,6 +71,7 @@ const SignUpPage = (props) => {
                     name="username"
                     autoComplete="username"
                     autoFocus
+                    inputProps={{ pattern: "[a-z]{1,15}" }}
                 />
                 <TextField
                     value={form.email}
@@ -83,6 +84,7 @@ const SignUpPage = (props) => {
                     label="E-mail"
                     name="email"
                     autoComplete="email"
+                    inputProps={{ pattern: "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" }}
                 />
                 <TextField
                     value={form.password}
@@ -96,6 +98,7 @@ const SignUpPage = (props) => {
                     type="password"
                     id="password"
                     autoComplete="current-password"
+                    inputProps={{ pattern: "[a-z]{6,}" }}
                 />
                 <Button
                     type="submit"
