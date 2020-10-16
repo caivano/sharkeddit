@@ -1,12 +1,12 @@
 export const goToLogin = (history) => {
-    history.push('/sharkeddit/login')
+    history.push('/login')
 }
 export const goToSignUp = (history) => {
-    history.push('/sharkeddit/cadastro')
+    history.push('/cadastro')
 }
 export const goToFeed = (history) => {
-    history.push('/sharkeddit/feed')
+    history.push('/feed')
 }
 export const goToPost = (history, id) => {
-    history.push(`/sharkeddit/feed/${id}`)
+    history.push(`/feed/${id}`)
 }
