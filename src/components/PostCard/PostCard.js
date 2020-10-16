@@ -12,6 +12,11 @@ const useStyles = makeStyles((theme) => ({
     root: {
         marginBottom: '10px',
     },
+    content: {
+        '&:hover':{
+            cursor: 'pointer',
+        }
+    },
     action: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -52,7 +57,7 @@ const PostCard = (props) => {
 
     return ( 
         <Card className={classes.root}>
-            <CardContent onClick={() => goToPost(history, postId)}>
+            <CardContent className={classes.content} onClick={() => goToPost(history, postId)}>
                 <Typography variant="caption" color="textSecondary" gutterBottom>
                     Posted by {username} {createdAt}
                 </Typography>
@@ -65,7 +70,7 @@ const PostCard = (props) => {
             </CardContent>
             <CardActions className={classes.action}>
                 <IconWrapper>
-                    <IconButton aria-label="voto positivo" onClick={() => voteHandler(postId, 1)}>
+                    <IconButton aria-label="voto positivo" onClick={() => voteHandler(postId, 1)} data-testid='positive-vote'>
                         <AddBoxIcon/>
                     </IconButton>
                     <Typography variant="body2" color="textPrimary" component="p">

@@ -10,17 +10,17 @@ const Router = (props) => {
     return ( 
         <Switch>
 
-            <Route exact path={'/login'}>
+            <Route exact path={'/sharkeddit/login'}>
                 <LoginPage setButtonName={props.setButtonName}/>
             </Route>
             
-            <Route exact path={'/cadastro'}>
+            <Route exact path={'/sharkeddit/cadastro'}>
                 <SignUpPage setButtonName={props.setButtonName}/>
             </Route>
             
-            <Route exact path={['/feed', '/', '/sharkeddit']} component={FeedPage} />
+            <Route exact path={['/sharkeddit/feed', '/', '/sharkeddit']} component={FeedPage} />
 
-            <Route exact path={'/feed/:id'} component={PostPage} />
+            <Route exact path={'/sharkeddit/feed/:id'} component={PostPage} />
             
             <Route component={ErrorPage}/>
             
