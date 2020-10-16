@@ -2,7 +2,6 @@
   "name": "labeddit",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://caivano.github.io/sharkeddit/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -20,9 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,7 +38,6 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "gh-pages": "^1.2.0",
     "jest-canvas-mock": "^2.3.0"
   }
 }
