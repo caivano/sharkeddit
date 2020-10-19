@@ -45,9 +45,6 @@ export const createComment = (id, body, setIsLoading, getPostDetail, setPostDeta
         }
     })
     .then((response) => {
-        console.log(id)
-        console.log(token)
-
         setPostDetail(response.data.post)
         setPostComments(response.data.post.comments)
     })
