@@ -3,6 +3,20 @@ import {baseURL} from '../constants/urls'
 
 const token = localStorage.getItem('token')
 
+export const getAllPosts = (setPostArray) => {
+    axios.get(`${baseURL}/posts`, {
+        headers: {
+            Authorization: token
+        }
+    })
+    .then((response) => {
+        setPostArray(response.data.posts)
+    })
+    .catch((error) => {
+        console.log(error.response)
+    })
+}
+
 export const createPost = (body, setIsLoading, getAllPosts) => {
     setIsLoading(true)
     axios.post(`${baseURL}/posts`, body, {

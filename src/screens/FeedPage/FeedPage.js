@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
-import { Container, makeStyles, Typography, Button, CircularProgress, TextField } from '@material-ui/core';
+import { Container, makeStyles, Typography, Button, CircularProgress, TextField, FormControlLabel, Checkbox } from '@material-ui/core';
 import useProtectedPage from '../../hooks/useProtectedPage';
 import useForm from '../../hooks/useForm'
 import useChangeTitle from '../../hooks/useChangeTitle';
 import PostCard from '../../components/PostCard/PostCard';
 import Loading from '../../components/Loading/Loading';
 import { timePassed } from '../../helpers/timePassed'
-import { baseURL } from '../../constants/urls';
-import { createPost } from '../../services/posts'
+import { getAllPosts, createPost } from '../../services/posts'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,12 +16,17 @@ const useStyles = makeStyles((theme) => ({
     },
     subcontainer: {
         marginBottom: theme.spacing(3)
+    },
+    filterContainer: {
+        display: 'flex',
+        flexDirection: 'row-reverse'
     }
 }))
 
 const FeedPage = () => {
     const classes = useStyles();
     const [postArray, setPostArray] = useState([])
+    const [userPostsOnly, setUserPostsOnly] = useState(false)
     const [buttonLoading, setButtonLoading] = useState(false)
     const [form, handleInputChange, resetState] = useForm({ title: '', text: ''})
     
@@ -31,24 +34,21 @@ const FeedPage = () => {
     useProtectedPage();
 
     useEffect(() => {
-        getAllPosts()
-    }, [])
+        const username = localStorage.getItem('username')
 
-    const getAllPosts = () => {
-        axios.get(`${baseURL}/posts`, {
-            headers: {
-                Authorization: localStorage.getItem('token')
-            }
-        })
-        .then((response) => {
-            setPostArray(response.data.posts)
-        })
-        .catch((error) => {
-            console.log(error.response)
-        })
-    }
+        if(userPostsOnly) {
+            const filteredPosts = postArray.filter(post => {
+                return post.username === username
+            })
+            setPostArray(filteredPosts)
+        } else {
+            setPostArray([])
+            getAllPosts(setPostArray)
+        }
+    }, [userPostsOnly])
         
     const renderPosts = () => {
+
         return (
             postArray.filter(post => {return typeof post.title === 'string'} )
             .sort((a, b) => {return b.createdAt - a.createdAt})
@@ -79,6 +79,12 @@ const FeedPage = () => {
             resetState()
         }
     }
+
+    const filterUserPosts = (event) => {
+        setUserPostsOnly(event.target.checked)
+    }
+
+    const renderAllPosts = postArray && postArray.length > 0 ? renderPosts() : <Loading/>
 
     return ( 
         <Container className={classes.root} maxWidth="md">
@@ -115,7 +121,13 @@ const FeedPage = () => {
                     </Button>
                 </form>
             </Container>
-            {postArray && postArray.length > 0 ? renderPosts() : <Loading/>}
+            <Container className={classes.filterContainer}>
+                <FormControlLabel
+                    control={<Checkbox checked={userPostsOnly} onChange={filterUserPosts} name="userPostsOnly" />}
+                    label="meus posts"
+                />
+            </Container>
+            {renderAllPosts}
         </Container>
      );
 }

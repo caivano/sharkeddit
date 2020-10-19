@@ -6,6 +6,7 @@ export const login = (body, history, setButtonName) => {
     axios.post(`${baseURL}/login`, body)
     .then((response) => {
         localStorage.setItem('token', response.data.token)
+        localStorage.setItem('username', response.data.user.username)
         goToFeed(history)
         setButtonName('logout')
     })
