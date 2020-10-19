@@ -45,7 +45,7 @@ const FeedPage = () => {
             setPostArray([])
             getAllPosts(setPostArray)
         }
-    }, [userPostsOnly])
+    }, [userPostsOnly, buttonLoading])
         
     const renderPosts = () => {
 
@@ -75,7 +75,7 @@ const FeedPage = () => {
         const isValid = element.checkValidity()
         element.reportValidity()
         if(isValid){
-            createPost(form, setButtonLoading, getAllPosts)
+            createPost(form, setButtonLoading)
             resetState()
         }
     }

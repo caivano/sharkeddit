@@ -13,11 +13,11 @@ export const getAllPosts = (setPostArray) => {
         setPostArray(response.data.posts)
     })
     .catch((error) => {
-        console.log(error.response)
+        console.log(error)
     })
 }
 
-export const createPost = (body, setIsLoading, getAllPosts) => {
+export const createPost = (body, setIsLoading) => {
     setIsLoading(true)
     axios.post(`${baseURL}/posts`, body, {
         headers: {
@@ -27,7 +27,6 @@ export const createPost = (body, setIsLoading, getAllPosts) => {
     .then(() => {
         setIsLoading(false)
         alert('Post criado com sucesso')
-        getAllPosts()
     })
     .catch(() => {
         setIsLoading(false)

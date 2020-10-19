@@ -11,6 +11,7 @@ const NavBar = (props) => {
 
     const logout = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('username')
     }
 
     const navBarAction = () => {
