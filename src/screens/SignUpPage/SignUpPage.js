@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { TextField, Button, Container, Avatar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,6 +6,7 @@ import LockIcon from '@material-ui/icons/Lock';
 import useForm from '../../hooks/useForm';
 import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 import { signup } from '../../services/users';
+import { validate, ErrorText } from './validate'
 import useChangeTitle from '../../hooks/useChangeTitle';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,17 +36,19 @@ const useStyles = makeStyles((theme) => ({
 const SignUpPage = (props) => {
     const classes = useStyles();
     const history = useHistory();
-    const [form, handleInputChange] = useForm({ username: '', email: '', password: ''})
+    const [errors, setErrors] = useState({})
+    const [form, handleInputChange] = useForm({ 
+        username: '', 
+        email: '', 
+        password: ''
+    })
 
     useChangeTitle("Cadastro")
     useUnprotectedPage();
 
     const onClickSignUp = (event) => {
         event.preventDefault()
-        const element = document.getElementById('signup-form')
-        const isValid = element.checkValidity()
-        element.reportValidity()
-        if(isValid){
+        if(validate(form,setErrors)){
             signup(form, history, props.setButtonName)
         }
     }
@@ -71,8 +74,8 @@ const SignUpPage = (props) => {
                     name="username"
                     autoComplete="username"
                     autoFocus
-                    inputProps={{ pattern: "[a-z]{1,15}" }}
                 />
+                <ErrorText>{errors.username}</ErrorText>
                 <TextField
                     value={form.email}
                     onChange={handleInputChange}
@@ -84,8 +87,8 @@ const SignUpPage = (props) => {
                     label="E-mail"
                     name="email"
                     autoComplete="email"
-                    inputProps={{ pattern: "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" }}
                 />
+                <ErrorText>{errors.email}</ErrorText>
                 <TextField
                     value={form.password}
                     onChange={handleInputChange}
@@ -98,8 +101,8 @@ const SignUpPage = (props) => {
                     type="password"
                     id="password"
                     autoComplete="current-password"
-                    inputProps={{ pattern: "[a-z]{6,}" }}
                 />
+                <ErrorText>{errors.password}</ErrorText>
                 <Button
                     type="submit"
                     variant="contained"
