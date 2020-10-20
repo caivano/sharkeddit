@@ -1,9 +1,8 @@
 import axios from 'axios'
-import {baseURL} from '../constants/urls'
 import { goToFeed } from '../routes/Coordinator'
 
 export const login = (body, history, setButtonName) => {
-    axios.post(`${baseURL}/login`, body)
+    axios.post(`${process.env.REACT_APP_BASE_URL}/login`, body)
     .then((response) => {
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('username', response.data.user.username)
@@ -17,7 +16,7 @@ export const login = (body, history, setButtonName) => {
 }
 
 export const signup = (body, history, setButtonName) => {
-    axios.post(`${baseURL}/signup`, body)
+    axios.post(`${process.env.REACT_APP_BASE_URL}/signup`, body)
     .then((response) => { 
         localStorage.setItem('token', response.data.token)
         goToFeed(history)
