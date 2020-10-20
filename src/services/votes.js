@@ -1,13 +1,11 @@
 import axios from 'axios'
-import {baseURL} from '../constants/urls'
-
 const token = localStorage.getItem('token')
 
 export const sendVote = (id, direction) => {
     const body = {
         direction: direction
     }
-    axios.put(`${baseURL}/posts/${id}/vote`, body, {
+    axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${id}/vote`, body, {
         headers: {
             Authorization: token
         }
@@ -22,7 +20,7 @@ export const sendCommentVote = (postId, commentId, direction) => {
     const body = {
         direction: direction
     }
-    axios.put(`${baseURL}/posts/${postId}/comment/${commentId}/vote`, body, {
+    axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${postId}/comment/${commentId}/vote`, body, {
         headers: {
             Authorization: token
         }

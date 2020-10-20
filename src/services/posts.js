@@ -1,10 +1,9 @@
 import axios from 'axios'
-import {baseURL} from '../constants/urls'
 
 const token = localStorage.getItem('token')
 
 export const getAllPosts = (setPostArray) => {
-    axios.get(`${baseURL}/posts`, {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts`, {
         headers: {
             Authorization: token
         }
@@ -19,7 +18,7 @@ export const getAllPosts = (setPostArray) => {
 
 export const createPost = (body, setIsLoading) => {
     setIsLoading(true)
-    axios.post(`${baseURL}/posts`, body, {
+    axios.post(`${process.env.REACT_APP_BASE_URL}/posts`, body, {
         headers: {
             Authorization: token
         }
@@ -36,7 +35,7 @@ export const createPost = (body, setIsLoading) => {
 
 export const createComment = (id, body, setIsLoading, getPostDetail, setPostDetail, setPostComments) => {
     setIsLoading(true)
-    axios.post(`${baseURL}/posts/${id}/comment`, body, {
+    axios.post(`${process.env.REACT_APP_BASE_URL}/posts/${id}/comment`, body, {
         headers: {
             Authorization: token
         }
@@ -52,15 +51,12 @@ export const createComment = (id, body, setIsLoading, getPostDetail, setPostDeta
 }
 
  export const getPostDetail = (id, setPostDetail, setPostComments) => {
-    axios.get(`${baseURL}/posts/${id}`, {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${id}`, {
         headers: {
             Authorization: token
         }
     })
     .then((response) => {
-        console.log(id)
-        console.log(token)
-
         setPostDetail(response.data.post)
         setPostComments(response.data.post.comments)
     })

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Router from './routes/Router';
 import NavBar from './components/NavBar';
 import theme from './constants/theme'
+require('dotenv').config()
 
 const InnerScreenContainer = styled.div`
   padding-top: 64px;
