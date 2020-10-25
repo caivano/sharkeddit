@@ -77,6 +77,7 @@ const FeedPage = () => {
         if(isValid){
             createPost(form, setButtonLoading)
             resetState()
+            setUserPostsOnly(false)
         }
     }
 
